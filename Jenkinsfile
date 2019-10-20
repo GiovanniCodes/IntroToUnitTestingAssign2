@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {docker {image 'python:3.7.2'} }
 
     stages {
         stage('Build') {
@@ -7,10 +7,17 @@ pipeline {
                 echo 'Hello testing world'
             }
         }
-        stage('Test') {
+        stage('Test 1') {
             steps {
-                sh 'python test_ppa2.py'
+                sh 'python Assignment2_test_doubles.py'
+               
             }
         }
+        
+        stage('Test 2') {
+           steps {
+               sh 'python flask_unit_test.py'
+           }
+       }
     }
 }
