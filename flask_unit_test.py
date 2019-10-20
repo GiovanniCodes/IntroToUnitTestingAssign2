@@ -1,6 +1,6 @@
 import unittest
 
-from flask_test import app
+from flask_python import app
 
 class testFlask(unittest.TestCase):
     def test_distance_response(self):
