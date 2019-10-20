@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo pip install -r req.txt'
+                sh 'sudo pip install --user -r req.txt'
                 echo 'Hello testing world'
             }
         }
