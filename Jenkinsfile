@@ -4,12 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip -m install pymongo'
+               
                 echo 'Hello testing world'
             }
         }
         stage('Test 1') {
-            steps {
+            steps { 
+                sh 'pip -m install pymongo'
                 sh 'python Assignment2_test_doubles.py'
                
             }
