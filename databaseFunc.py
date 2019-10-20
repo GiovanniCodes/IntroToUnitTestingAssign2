@@ -5,6 +5,7 @@ client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["assign2"]
 results = db["results"]
 entries = db["entries"]
+requestIn = db["request"]
 
 class databaseNeeds:
     @staticmethod
@@ -47,4 +48,12 @@ class databaseNeeds:
 
         result = results.insert_one(post_data)
         print('One post: {0}'.format(result.inserted_id))
+        return True
+
+    @staticmethod
+    def insertRequest(x):
+
+
+        req = requestIn.insert_one(x)
+        print('One post: {0}'.format(requestIn.inserted_id))
         return True
