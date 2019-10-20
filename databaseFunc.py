@@ -54,6 +54,6 @@ class databaseNeeds:
     def insertRequest(x):
 
 
-        req = requestIn.insert_one(x)
-        print('One post: {0}'.format(requestIn.inserted_id))
+        req = requestIn.insert_one({'url':x})
+        print('One post: {0}'.format(req.inserted_id))
         return True
