@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Test 1') {
             steps { 
-                sh 'pip -m install pymongo'
+                sh 'pip3 install pymongo'
                 sh 'python Assignment2_test_doubles.py'
                
             }
