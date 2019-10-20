@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'pip install pymongo'
+                sh 'pip -m install pymongo'
                 echo 'Hello testing world'
             }
         }
