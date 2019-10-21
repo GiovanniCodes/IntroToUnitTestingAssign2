@@ -1,22 +1,30 @@
-# Parent Dockerfile https://github.com/docker-library/mongo/blob/982328582c74dd2f0a9c8c77b84006f291f974c3/3.0/Dockerfile
-FROM mongo:latest
+FROM       ubuntu:16.04
+MAINTAINER Docker
 
-# Modify child mongo to use /data/db2 as dbpath (because /data/db wont persist the build)
-RUN mkdir -p /data/db2 \
-    && echo "dbpath = /data/db2" > /etc/mongodb.conf \
-    && chown -R mongodb:mongodb /data/db2
+# Installation:
+RUN apt-get update && apt-get install -y build-essential python2.7 
+RUN apt-get install -y python-setuptools
+RUN apt-get install -y python-pip
+RUN apt-get install -y nano
+RUN apt-get install -y telnet
+RUN apt-get install -y vim
 
-COPY . /data/db2
+# Import MongoDB public GPG key AND create a MongoDB list file
+RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv 7F0CEB10
+RUN echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/10gen.list
 
-RUN mongod --fork --logpath /var/log/mongodb.log --dbpath /data/db2 \
-    && CREATE_FILES=/data/db2/scripts/*-create.js \
-    && for f in $CREATE_FILES; do mongo 127.0.0.1:27017 $f; done \
-    && INSERT_FILES=/data/db2/scripts/*-insert.js \
-    && for f in $INSERT_FILES; do mongo 127.0.0.1:27017 $f; done \
-    && mongod --dbpath /data/db2 --shutdown \
-    && chown -R mongodb /data/db2
+# Update apt-get sources AND install MongoDB
+RUN apt-get update && apt-get install -y mongodb-org
 
-# Make the new dir a VOLUME to persists it
-VOLUME /data/db2
+# Create the MongoDB data directory
+RUN mkdir -p /data/db
 
-CMD ["mongod", "--config", "/etc/mongodb.conf", "--smallfiles"]
+# Create the MongoDB data directory
+RUN mkdir -p /data/code
+
+RUN pip install bottle
+
+RUN pip install pymongo
+
+# Expose port #27017 from the container to the host
+EXPOSE 27017
