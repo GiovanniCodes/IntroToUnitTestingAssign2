@@ -7,7 +7,7 @@ pipeline {
                
                 sh """
                 python3 -m venv env
-                source ./env/bin/activate
+                . ./env/bin/activate
                 python -m pip install --user -r req.txt
                 """
                 echo 'Hello testing world'
