@@ -27,8 +27,8 @@ pipeline {
         stage('Test 2') {
            steps {
                 withEnv(["HOME=${env.WORKSPACE}"]){
-                sh 'docker build -t <mongod>'
-                sh 'run -d mongod'  
+                sh 'docker build -t mongodb'
+                sh 'run -d mongodb'  
                 sh 'pip install --user -r req.txt'
                 sh 'python flask_unit_test.py'
                
