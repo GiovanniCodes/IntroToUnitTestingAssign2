@@ -1,5 +1,5 @@
 pipeline {
-    agent {docker {image 'python:3.7.2' }}
+    agent {docker {image 'python:3.7.2' } docker true}
 
     stages {
         stage('Build') {
@@ -23,13 +23,12 @@ pipeline {
                
             }
         }
-        agent {label 'docker'}
+        
         stage('Test 2') {
            steps {
                 withEnv(["HOME=${env.WORKSPACE}"]){
                
                 sh """
-                docker pull mongo
                 docker run -d -p 27017:27017 --name m1 mongo
                 pip install --user -r req.txt
                 sh 'python flask_unit_test.py
