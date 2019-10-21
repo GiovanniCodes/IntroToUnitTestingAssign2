@@ -11,8 +11,6 @@ pipeline {
             }
         }
         stage('Test 1') {    
-            def dockerHome = tool 'myDocker'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
             steps { 
                 
                withEnv(["HOME=${env.WORKSPACE}"]){
