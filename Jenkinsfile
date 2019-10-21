@@ -5,11 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                
-               withEnv(["HOME=${env.WORKSPACE}"]){
-                sh 'pip install --user -r req.txt'
-                
-              
-                }  
+            
                 
                 echo 'Hello testing world'
             }
@@ -17,8 +13,12 @@ pipeline {
         stage('Test 1') {
             steps { 
                 
-            
+               withEnv(["HOME=${env.WORKSPACE}"]){
+                sh 'pip install --user -r req.txt'
                 sh 'python Assignment2_test_doubles.py'
+              
+                }  
+               
                echo 'swag'
                
             }
@@ -26,7 +26,12 @@ pipeline {
         
         stage('Test 2') {
            steps {
-               sh 'python flask_unit_test.py'
+                withEnv(["HOME=${env.WORKSPACE}"]){
+                sh 'pip install --user -r req.txt'
+                sh 'python flask_unit_test.py'
+               
+                }  
+               
            }
        }
     }
