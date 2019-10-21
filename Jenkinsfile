@@ -6,9 +6,10 @@ pipeline {
             steps {
                
                 sh """
-                python3 -m venv env
-                . ./env/bin/activate
-                python3 -m pip install --user -r req.txt
+                virtualenv venv --distribute
+                    . venv/bin/activate 
+                    pip install -r req.txt
+                    python Assignment2_test_doubles.py
                 """
                 echo 'Hello testing world'
             }
