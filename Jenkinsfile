@@ -4,19 +4,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withEnv(["HOME=${env.WORKSPACE}"]){
+               
+               withEnv(["HOME=${env.WORKSPACE}"]){
                 sh 'pip install --user -r req.txt'
-                sh 'python Assignment2_test_doubles.py'
                 
-                }  
               
+                }  
                 
                 echo 'Hello testing world'
             }
         }
         stage('Test 1') {
             steps { 
+                
             
+                sh 'python Assignment2_test_doubles.py'
                echo 'swag'
                
             }
