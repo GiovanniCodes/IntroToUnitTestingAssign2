@@ -1,4 +1,4 @@
-
+FROM Scratch
 MAINTAINER Docker
 
 # Installation:
