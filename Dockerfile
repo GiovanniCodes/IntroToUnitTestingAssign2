@@ -8,7 +8,7 @@ RUN mkdir -p /data/db2 \
 
 COPY . /data/db2
 
-RUN mongod --fork --logpath /var/log/mongodb.log --dbpath /data/db2 --smallfiles \
+RUN mongod --fork --logpath /var/log/mongodb.log --dbpath /data/db2 \
     && CREATE_FILES=/data/db2/scripts/*-create.js \
     && for f in $CREATE_FILES; do mongo 127.0.0.1:27017 $f; done \
     && INSERT_FILES=/data/db2/scripts/*-insert.js \
