@@ -1,10 +1,10 @@
 from pymongo import MongoClient
 from flask import Flask
-client = MongoClient("mongodb://user:gg1234@cluster0-shard-00-00-wpaly.mongodb.net:27017,cluster0-shard-00-01-wpaly.mongodb.net:27017,cluster0-shard-00-02-wpaly.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority")
+client = MongoClient("mongodb://localhost:27017/")
 db = client.assign2
-results = db.results
-entries = db.entries
-retireEntries = db.retireEntries
+results = db["results"]
+entries = db["entries"]
+requestIn = db["request"]
 
 
 app = Flask(__name__)
