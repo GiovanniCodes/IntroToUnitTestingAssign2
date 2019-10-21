@@ -10,15 +10,18 @@ pipeline {
                 virtualenv venv --distribute
                     . venv/bin/activate 
                     pip install -r req.txt
-                    python Assignment2_test_doubles.py
+                  
                 """
                 echo 'Hello testing world'
             }
         }
         stage('Test 1') {
             steps { 
-           
-                sh 'python Assignment2_test_doubles.py'
+             sh """
+                . .env/bin/activate
+                 ./python Assignment2_test_doubles.py
+                """
+               
                
             }
         }
