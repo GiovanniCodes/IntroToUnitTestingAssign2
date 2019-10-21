@@ -19,7 +19,7 @@ pipeline {
             steps { 
              sh """
                 . venv/bin/activate
-                 ./python Assignment2_test_doubles.py
+                 ./Assignment2_test_doubles.py
                 """
                
                
