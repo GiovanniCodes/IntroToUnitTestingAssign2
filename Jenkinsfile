@@ -6,6 +6,7 @@ pipeline {
             steps {
                
                 sh """
+                pip install virtualenv
                 virtualenv venv --distribute
                     . venv/bin/activate 
                     pip install -r req.txt
