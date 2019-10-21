@@ -1,11 +1,7 @@
-FROM       ubuntu
+
 MAINTAINER Docker
 
 # Installation:
-RUN apt-get update && apt-get install -y build-essential python2.7 
-RUN apt-get install -y python-setuptools
-RUN apt-get install -y python-pip
-
 
 # Update apt-get sources AND install MongoDB
 RUN apt-get update && apt-get install -y mongodb-org
