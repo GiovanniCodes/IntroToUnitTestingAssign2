@@ -10,7 +10,9 @@ pipeline {
                 echo 'Hello testing world'
             }
         }
-        stage('Test 1') {
+        stage('Test 1') {    
+            def dockerHome = tool 'myDocker'
+            env.PATH = "${dockerHome}/bin:${env.PATH}"
             steps { 
                 
                withEnv(["HOME=${env.WORKSPACE}"]){
@@ -18,8 +20,7 @@ pipeline {
                 sh 'python Assignment2_test_doubles.py'
               
                 }  
-                 def dockerHome = tool 'myDocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
+             
                echo 'swag'
                
             }
