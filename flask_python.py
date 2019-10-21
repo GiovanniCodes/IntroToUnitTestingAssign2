@@ -1,4 +1,4 @@
-from databaseFunc import insertRequest
+from databaseFunc import databaseNeeds
 from pymongo import MongoClient
 
 from flask import Flask
@@ -17,7 +17,7 @@ app = Flask(__name__)
 def distanceHTTP():
     pymongo_cursor = db.collection.find()
     allDistData = ''
-    insertRequest("localhost:27017/distance")
+    databaseNeeds.insertRequest("localhost:27017/distance")
     for document in entries.find({}, {"_id": 0, "x1": 1, "x2": 1, 'y1': 1, "y2": 1, "timestamp": 1}):
         #print(document)  # iterate the cursor
         tempRetire = str(document)
@@ -29,7 +29,7 @@ def distanceHTTP():
 def retirementHTTP():
     pymongo_cursor = db.collection.find({})
     allRetireData = ''
-    insertRequest("localhost:27017/retirement")
+    databaseNeeds.insertRequest("localhost:27017/retirement")
     for document in retireEntries.find({}, {"_id": 0, "age": 1, "annualSalary": 1, 'percentSaved': 1,
                                             "retirementSaveGoal": 1}):
         #print(document)  # iterate the cursor
