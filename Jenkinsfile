@@ -18,7 +18,7 @@ pipeline {
         stage('Test 1') {
             steps { 
              sh """
-                . .env/bin/activate
+                . venv/bin/activate
                  ./python Assignment2_test_doubles.py
                 """
                
