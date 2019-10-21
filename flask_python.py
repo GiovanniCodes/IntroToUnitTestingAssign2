@@ -17,7 +17,7 @@ app = Flask(__name__)
 def distanceHTTP():
     pymongo_cursor = db.collection.find()
     allDistData = ''
-    databaseNeeds.insertRequest("localhost:27017/distance")
+    #databaseNeeds.insertRequest("localhost:27017/distance")
     for document in entries.find({}, {"_id": 0, "x1": 1, "x2": 1, 'y1': 1, "y2": 1, "timestamp": 1}):
         #print(document)  # iterate the cursor
         tempRetire = str(document)
