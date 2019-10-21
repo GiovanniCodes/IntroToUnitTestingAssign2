@@ -6,7 +6,7 @@ pipeline {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]){
                 sh 'pip install --user -r req.txt'
-                sh 'python assignment_2_test_doubles.py'
+                sh 'python Assignment2_test_doubles.py'
                 
                 }  
               
