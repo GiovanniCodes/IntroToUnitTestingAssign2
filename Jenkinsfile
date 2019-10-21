@@ -29,6 +29,7 @@ pipeline {
                 withEnv(["HOME=${env.WORKSPACE}"]){
                
                 sh """
+                docker pull mongo
                 docker run -d -p 27017:27017 --name m1 mongo
                 pip install --user -r req.txt
                 sh 'python flask_unit_test.py
