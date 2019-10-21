@@ -23,7 +23,7 @@ pipeline {
                
             }
         }
-        agent{label 'docker'}
+        agent {label 'docker'}
         stage('Test 2') {
            steps {
                 withEnv(["HOME=${env.WORKSPACE}"]){
